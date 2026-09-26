@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="通过系统打开方式、拖拽或手动选择处理文件，并保存最近处理记录。">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <title>File Handler Lab</title>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#file-list">跳到文件列表</a>
+
+    <header class="hero">
+      <div>
+        <p class="eyebrow">File Handling API · File API · FileReader · IndexedDB</p>
+        <h1>系统文件处理器</h1>
+        <p class="hero-copy">注册后，可从系统“打开方式”把文件交给网页；也可拖拽或手动选择文件。</p>
+      </div>
+      <div class="hero-actions">
+        <button id="install-button" class="primary" type="button">注册为系统文件处理器</button>
+        <button id="pick-button" type="button">手动选择文件</button>
+        <input id="file-input" type="file" multiple hidden>
+      </div>
+    </header>
+
+    <main>
+      <section class="status-grid" aria-label="运行状态">
+        <article id="secure-card" class="status-card">
+          <span class="status-dot"></span>
+          <div>
+            <h2>安全上下文</h2>
+            <p id="secure-status">正在检查…</p>
+          </div>
+        </article>
+        <article id="support-card" class="status-card">
+          <span class="status-dot"></span>
+          <div>
+            <h2>File Handling API</h2>
+            <p id="support-status">正在检查…</p>
+          </div>
+        </article>
+        <article id="registration-card" class="status-card">
+          <span class="status-dot"></span>
+          <div>
+            <h2>系统注册</h2>
+            <p id="registration-status">正在检查…</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="drop-zone" class="drop-zone" tabindex="0" aria-labelledby="drop-title">
+        <div class="drop-icon" aria-hidden="true">⇩</div>
+        <div>
+          <h2 id="drop-title">拖拽文件到这里</h2>
+          <p>支持多文件，按选择顺序处理。也支持系统“打开方式”和手动选择。</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="queue-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Processing queue</p>
+            <h2 id="queue-title">文件预览</h2>
+          </div>
+          <p id="queue-summary" class="muted">尚未接收文件</p>
+        </div>
+        <div id="file-list" class="file-list" aria-live="polite"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="history-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">IndexedDB</p>
+            <h2 id="history-title">最近处理记录</h2>
+          </div>
+          <button id="clear-history" type="button">清空记录</button>
+        </div>
+        <div id="history-list" class="history-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <template id="file-card-template">
+      <article class="file-card">
+        <div class="file-icon" aria-hidden="true"></div>
+        <div class="file-body">
+          <div class="file-heading">
+            <div>
+              <h3 class="file-name"></h3>
+              <p class="file-meta"></p>
+            </div>
+            <span class="file-state"></span>
+          </div>
+          <div class="preview"></div>
+        </div>
+      </article>
+    </template>
+  </body>
+</html>

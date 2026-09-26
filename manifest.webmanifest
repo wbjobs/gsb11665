@@ -1,0 +1,69 @@
+{
+  "id": "/",
+  "name": "File Handler Lab",
+  "short_name": "Files",
+  "description": "Open, inspect, preview, and record files from the system Open With menu.",
+  "start_url": "/index.html?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "theme_color": "#2563eb",
+  "background_color": "#f8fafc",
+  "file_handlers": [
+    {
+      "name": "用 File Handler Lab 打开",
+      "action": "/index.html?launch=file",
+      "launch_type": "single-client",
+      "accept": {
+        "text/plain": [".txt", ".text", ".md", ".markdown", ".csv", ".log", ".json", ".xml", ".yaml", ".yml", ".ts"],
+        "text/html": [".html", ".htm"],
+        "text/css": [".css"],
+        "application/javascript": [".js", ".mjs"],
+        "application/json": [".json"],
+        "application/pdf": [".pdf"],
+        "image/png": [".png"],
+        "image/jpeg": [".jpg", ".jpeg"],
+        "image/gif": [".gif"],
+        "image/webp": [".webp"],
+        "image/svg+xml": [".svg"],
+        "image/avif": [".avif"],
+        "image/x-icon": [".ico"],
+        "image/bmp": [".bmp"]
+      }
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

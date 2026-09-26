@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="File Handler Lab">
+  <rect width="512" height="512" rx="112" fill="#2563eb"/>
+  <path d="M164 92h132l72 72v256H164z" fill="#fff"/>
+  <path d="M296 92v84h72" fill="#bfdbfe"/>
+  <path d="M204 236h128M204 282h128M204 328h88" stroke="#2563eb" stroke-width="24" stroke-linecap="round"/>
+</svg>
