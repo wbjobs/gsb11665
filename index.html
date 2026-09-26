@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2563eb" />
+  <title>系统文件处理器</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>📂 系统文件处理器</h1>
+    <p class="subtitle">从系统「打开方式」直接把文件交给本网页处理</p>
+  </header>
+
+  <!-- 环境 / 能力检测横幅 -->
+  <section id="banner-area" aria-live="polite"></section>
+
+  <!-- 能力状态 -->
+  <section class="status-card">
+    <h2>能力检测</h2>
+    <ul id="capability-list" class="capability-list"></ul>
+  </section>
+
+  <!-- 拖拽 / 手动选择（降级方案，始终可用） -->
+  <section id="drop-zone" class="drop-zone" tabindex="0" role="button"
+           aria-label="拖拽文件到此处，或点击选择文件">
+    <p class="drop-hint">🗂 拖拽文件到此处，或 <button id="pick-btn" type="button" class="link-btn">手动选择文件</button></p>
+    <p class="drop-sub">支持多文件 · 文本 / JSON / 图片（png / jpg / gif / webp / svg）</p>
+    <input id="file-input" type="file" multiple hidden
+           accept=".txt,.log,.md,.csv,.json,.png,.jpg,.jpeg,.gif,.webp,.svg,text/plain,application/json,image/*" />
+  </section>
+
+  <!-- 当前处理结果 -->
+  <section>
+    <h2>本次处理 <span id="current-count" class="count-badge">0</span></h2>
+    <ul id="current-list" class="file-list"></ul>
+  </section>
+
+  <!-- 历史记录（IndexedDB） -->
+  <section>
+    <div class="history-head">
+      <h2>最近处理记录</h2>
+      <button id="clear-history" type="button" class="link-btn danger">清空记录</button>
+    </div>
+    <ul id="history-list" class="file-list"></ul>
+  </section>
+
+  <!-- 消息提示 -->
+  <div id="toast-area" class="toast-area" aria-live="assertive"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
